@@ -1,9 +1,8 @@
-import loadIntoCheerio from "../loadIntoCheerio.js";
+import loadIntoCheerio from "../cheerio/loadIntoCheerio.js";
 import Gem from "../../models/gemModel.js";
 
-const url = "https://www.gia.edu/gem-encyclopedia"
-
 async function getGems() {
+    const url = "https://www.gia.edu/gem-encyclopedia"
     const $ = await loadIntoCheerio(url)
 
     const gems = []
@@ -18,8 +17,6 @@ async function getGems() {
         const gem = new Gem(title, polishedImg, roughImg)
 
         await gem.fetchDetails()
-
-        console.log(gem)
 
         gems.push(gem)
     })

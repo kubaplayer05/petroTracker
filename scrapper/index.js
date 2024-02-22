@@ -1,7 +1,9 @@
 import getGems from "./utils/gems/getGems.js";
+import getMinerals from "./utils/minerals/getMinerals.js";
 
 async function main() {
-    const gems = await getGems()
+    await getGems()
+    await getMinerals()
 }
 
 main().finally(() => {
