@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import authRoute from "./routes/authRoute";
 import authMiddleware from "./middlewares/authMiddleware";
+import mineralRoute from "./routes/mineralRoute";
+import gemstoneRoute from "./routes/gemstoneRoute";
 
 dotenv.config()
 
@@ -19,6 +21,8 @@ app.use(cookieParser())
 // Routes
 
 app.use("/", authRoute)
+app.use("/mineral", mineralRoute)
+app.use("/gemstone", gemstoneRoute)
 
 app.use(authMiddleware)
 

@@ -11,6 +11,6 @@ const pool = new Pool({
     port: 5432,
 })
 
-export const query = (text: string, params: any) => {
+export const query = (text: string, params?: any) => {
     return pool.query(text, params)
 }
