@@ -16,6 +16,8 @@ async function getMinerals() {
 
         const mineral = new Mineral(name, href)
         await mineral.getDetails()
+        await mineral.uploadToDB()
+
         minerals.push(mineral)
     })
 

@@ -15,8 +15,8 @@ async function getGems() {
         const polishedImg = el.children[2].attribs.src
 
         const gem = new Gem(title, polishedImg, roughImg)
-
-        await gem.fetchDetails()
+        await gem.getDetails()
+        await gem.uploadToDb()
 
         gems.push(gem)
     })
