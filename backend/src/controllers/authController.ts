@@ -50,6 +50,8 @@ export async function loginHandler(req: Request, res: Response) {
 
     const {username, password} = req.body
 
+    console.log(req.body)
+
     const {valid: usernameIsValid, msg: usernameMsg} = verifyUsername(username)
     if (!usernameIsValid) {
         return res.status(400).json({

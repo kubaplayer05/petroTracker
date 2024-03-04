@@ -11,10 +11,11 @@ dotenv.config()
 
 const app = express();
 const port = process.env.PORT || 3000;
+const frontendUrl = process.env.FRONTEND_URL
 
 // Config
 
-app.use(cors({credentials: true}));
+app.use(cors({credentials: true, origin: frontendUrl}));
 app.use(express.json());
 app.use(cookieParser())
 
