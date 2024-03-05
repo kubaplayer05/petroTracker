@@ -1,11 +1,20 @@
-export function validatePassword(password: string) {
-    if (password.length >= 6) return true
-
-    return false
+interface ValidateResponse {
+    isValid: boolean,
+    error: string
 }
 
-export function validateUsername(username: string) {
-    if (username.length >= 3) return true
+export function validatePassword(password: string): ValidateResponse {
+    const minLength = 6
 
-    return false
+    if (password.length >= minLength) return {isValid: true, error: ""}
+
+    return {isValid: false, error: `password must be min. ${minLength} characters long`}
+}
+
+export function validateUsername(username: string): ValidateResponse {
+    const minLength = 3
+
+    if (username.length >= minLength) return {isValid: true, error: ""}
+
+    return {isValid: false, error: `username must be min. ${minLength} characters long `}
 }

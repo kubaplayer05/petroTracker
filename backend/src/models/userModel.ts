@@ -17,6 +17,8 @@ export class User {
         const text = "SELECT password FROM Users WHERE username=$1"
         const result = await query(text, [username])
 
+        if (!result.rows[0]) throw Error
+
         const hash = result.rows[0].password
         return await bcrypt.compare(password, hash)
     }

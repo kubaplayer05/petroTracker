@@ -66,26 +66,32 @@ export async function loginHandler(req: Request, res: Response) {
         })
     }
 
-    const loginStatus = await User.login(username, password)
+    try {
+        const loginStatus = await User.login(username, password)
 
-    if (!loginStatus) {
-        return res.status(400).json({
-            "error": "Wrong password provided"
+        if (!loginStatus) {
+            return res.status(400).json({
+                "error": "Wrong password provided"
+            })
+        }
+
+        const token = createToken(username)
+
+        res.cookie("token", token, {
+            httpOnly: true,
+        })
+
+        res.cookie("user", JSON.stringify({username}), {
+            httpOnly: false
+        })
+
+        return res.status(200).json({
+            "msg": "Successfully login",
+            "user": username
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: "Could not login user"
         })
     }
-
-    const token = createToken(username)
-
-    res.cookie("token", token, {
-        httpOnly: true,
-    })
-
-    res.cookie("user", JSON.stringify({username}), {
-        httpOnly: false
-    })
-
-    return res.status(200).json({
-        "msg": "Successfully login",
-        "user": username
-    })
 }

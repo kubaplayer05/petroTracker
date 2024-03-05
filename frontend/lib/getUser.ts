@@ -1,7 +1,5 @@
-import {cookies} from "next/headers";
-
-export function getUserFromCookie() {
-    const user = cookies().get("user")?.value
+export function getUserFromClient() {
+    const user = getCookie("user")
     return user ? JSON.parse(user) : null
 }
 
@@ -18,4 +16,8 @@ function getCookie(name: string) {
     }
 
     return null
+}
+
+export function deleteCookie(name: string) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }

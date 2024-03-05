@@ -1,10 +1,14 @@
+"use client"
+
 import Link from "next/link";
-import {getUserFromCookie} from "@/lib/getUser";
-import {Button} from "@/components/ui/button";
+import NavProfile from "@/components/navProfile";
+import {usePathname} from "next/navigation";
 
 export default async function Navbar() {
 
-    const user = getUserFromCookie()
+    const pathname = usePathname()
+
+    if (pathname === "/login" || pathname === "/register") return <></>
 
     return (
         <header className={"bg-white shadow-lg"}>
@@ -16,10 +20,7 @@ export default async function Navbar() {
                     <Link href={"/"}>Gallery</Link>
                     <Link href={"/"}>Collection</Link>
                 </nav>
-                {!user && <Button className={"bg-fuchsia-800 hover:bg-fuchsia-700 text-lg px-5 py-2"}>
-                    <Link href={"/login"}>Login</Link>
-                </Button>}
-                {user && <p>kubaplayer23</p>}
+                <NavProfile/>
             </div>
         </header>
     )
