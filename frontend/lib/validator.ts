@@ -8,7 +8,7 @@ export function validatePassword(password: string): ValidateResponse {
 
     if (password.length >= minLength) return {isValid: true, error: ""}
 
-    return {isValid: false, error: `password must be min. ${minLength} characters long`}
+    return {isValid: false, error: `min. ${minLength} characters long`}
 }
 
 export function validateUsername(username: string): ValidateResponse {
@@ -16,5 +16,5 @@ export function validateUsername(username: string): ValidateResponse {
 
     if (username.length >= minLength) return {isValid: true, error: ""}
 
-    return {isValid: false, error: `username must be min. ${minLength} characters long `}
+    return {isValid: false, error: `min. ${minLength} characters long `}
 }

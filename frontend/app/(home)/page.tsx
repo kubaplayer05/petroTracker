@@ -6,7 +6,7 @@ export default function HomePage() {
 
     return (
         <main className={"py-10 flex flex-col items-center gap-20"}>
-            <Image src={gemImgSrc} alt={"Polished Gemstone"} width={300} height={400}/>
+            <Image id={"heroImage"} src={gemImgSrc} alt={"Polished Gemstone"} width={300} height={400}/>
             <h2 className={"text-slate-700 text-6xl font-bold max-w-[1000px] text-center "}>
                 All About Petrology, <span className={"text-fuchsia-400"}>Gemstones</span> and <span
                 className={"text-fuchsia-400"}>Minerals</span>

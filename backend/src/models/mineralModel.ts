@@ -3,7 +3,7 @@ import {query} from "../db";
 export class Mineral {
 
     static async getAll() {
-        const result = await query("SELECT id, name FROM Minerals ORDER BY id")
+        const result = await query("SELECT id, name FROM Minerals ORDER BY name")
 
         return result.rows
     }

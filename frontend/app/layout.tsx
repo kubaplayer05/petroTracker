@@ -1,7 +1,7 @@
 import type {Metadata} from "next";
 import {Lato} from "next/font/google";
 import "../styles/globals.css";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar/navbar";
 import {Toaster} from "@/components/ui/toaster";
 
 const lato = Lato({subsets: ["latin"], weight: "400"});

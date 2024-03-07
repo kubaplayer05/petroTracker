@@ -1,16 +1,16 @@
 "use client"
 
-import {FormEvent} from "react";
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
 import useInput from "@/hooks/useInput";
 import {validatePassword, validateUsername} from "@/lib/validator";
 import {useRouter} from "next/navigation";
-import {Label} from "@/components/ui/label";
-import Link from "next/link";
 import {useToast} from "@/components/ui/use-toast";
+import {FormEvent} from "react";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
-export default function LoginForm() {
+export default function RegisterForm() {
 
     const {
         value: username,
@@ -41,7 +41,7 @@ export default function LoginForm() {
 
         try {
 
-            const res = await fetch(`${apiUrl}/login`, {
+            const res = await fetch(`${apiUrl}/register`, {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify(formData),
@@ -54,7 +54,7 @@ export default function LoginForm() {
 
             if (res.status >= 400) {
                 return toast({
-                    title: "Login Failed",
+                    title: "Creating account Failed",
                     description: data.msg
                 })
             }
@@ -64,7 +64,7 @@ export default function LoginForm() {
         } catch (err: any) {
             toast({
                 variant: "default",
-                title: "Login Failed ...",
+                title: "Creating account Failed ...",
                 description: `Something went wrong`,
             })
         }
@@ -74,7 +74,7 @@ export default function LoginForm() {
         <form onSubmit={submitHandler} className={"flex flex-col gap-4 min-w-72"}>
             <div className={"flex flex-col gap-2"}>
                 <Label htmlFor={"username"}>
-                    Username {usernameError && <span className={"text-red-800 w-fit"}>| {usernameError}</span>}
+                    Username {usernameError && <span className={"text-red-800"}>| {usernameError}</span>}
                 </Label>
                 <Input id={"username"} placeholder={"Your wonderfully name"} value={username}
                        className={`${isValidUsername ? "border-green-500" : "border-red-500"}`}
@@ -98,4 +98,5 @@ export default function LoginForm() {
                 disabled={!isFormValid}>Submit</Button>
         </form>
     )
+
 }
