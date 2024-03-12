@@ -19,8 +19,8 @@ export default async function Navbar() {
                 <nav className={"flex gap-5 text-xl"}>
                     <Link href={"/gemstones"}>Gemstones</Link>
                     <Link href={"/minerals"}>Minerals</Link>
-                    <Link href={"/"}>Gallery</Link>
-                    <Link href={"/"}>Collection</Link>
+                    <Link href={"/lectures"}>Lectures</Link>
+                    <Link href={"/image-detection"}>Image detection</Link>
                 </nav>
                 <NavProfile/>
             </div>

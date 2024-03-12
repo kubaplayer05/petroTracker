@@ -3,11 +3,28 @@ import {Card, CardContent, CardTitle} from "@/components/ui/card";
 import GemstoneCardFooter from "@/components/gemstone/[id]/gemstoneCardFooter";
 import {FaCircleQuestion} from "react-icons/fa6";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
+import Image from "next/image";
 
 export default function GemstoneCardWIthDetails({gemstone}: { gemstone: GemstoneWithDetails }) {
 
+    const images = [gemstone.roughimg, gemstone.polishedimg]
+
     return (
         <Card className={"px-5 py-7 mx-auto max-w-[800px] "}>
+            <Carousel className={"w-[80%] mx-auto"}>
+                <CarouselContent>
+                    {images.map(img => {
+                        return (
+                            <CarouselItem className={"w-full flex justify-center items-center"}>
+                                <Image className={"w-[200px] h-[200px]"} src={img} alt={"Gemstone"} width={150} height={150}/>
+                            </CarouselItem>
+                        )
+                    })}
+                </CarouselContent>
+                <CarouselPrevious/>
+                <CarouselNext/>
+            </Carousel>
             <CardTitle className={"py-2 uppercase text-center"}>{gemstone.name}</CardTitle>
             <CardContent className={"text-xl mt-5 flex flex-col gap-4"}>
                 <div>

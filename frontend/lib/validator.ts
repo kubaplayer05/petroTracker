@@ -11,10 +11,10 @@ export function validatePassword(password: string): ValidateResponse {
     return {isValid: false, error: `min. ${minLength} characters long`}
 }
 
-export function validateUsername(username: string): ValidateResponse {
+export function validateName(name: string): ValidateResponse {
     const minLength = 3
 
-    if (username.length >= minLength) return {isValid: true, error: ""}
+    if (name.length >= minLength) return {isValid: true, error: ""}
 
     return {isValid: false, error: `min. ${minLength} characters long `}
 }

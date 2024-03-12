@@ -1,7 +1,7 @@
 "use client"
 
 import useInput from "@/hooks/useInput";
-import {validatePassword, validateUsername} from "@/lib/validator";
+import {validatePassword, validateName} from "@/lib/validator";
 import {useRouter} from "next/navigation";
 import {useToast} from "@/components/ui/use-toast";
 import {FormEvent} from "react";
@@ -17,7 +17,7 @@ export default function RegisterForm() {
         isValid: isValidUsername,
         setValue: setUsername,
         error: usernameError
-    } = useInput(validateUsername)
+    } = useInput(validateName)
     const {
         value: password,
         isValid: isValidPassword,

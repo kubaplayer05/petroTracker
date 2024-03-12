@@ -10,7 +10,7 @@ export default function useInput(validFn: any) {
 
     useEffect(() => {
 
-        const {isValid, error} = validFn(value)
+        const {isValid, error} = validFn ? validFn(value) : true
 
         setIsValid(isValid)
         setError(error)

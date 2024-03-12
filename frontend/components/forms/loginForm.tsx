@@ -4,7 +4,7 @@ import {FormEvent} from "react";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import useInput from "@/hooks/useInput";
-import {validatePassword, validateUsername} from "@/lib/validator";
+import {validatePassword, validateName} from "@/lib/validator";
 import {useRouter} from "next/navigation";
 import {Label} from "@/components/ui/label";
 import Link from "next/link";
@@ -17,7 +17,7 @@ export default function LoginForm() {
         isValid: isValidUsername,
         setValue: setUsername,
         error: usernameError
-    } = useInput(validateUsername)
+    } = useInput(validateName)
     const {
         value: password,
         isValid: isValidPassword,
@@ -32,6 +32,7 @@ export default function LoginForm() {
 
     const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
         const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
         const formData = {

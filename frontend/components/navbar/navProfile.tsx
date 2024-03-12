@@ -4,17 +4,26 @@ import {deleteCookie, getUserFromClient} from "@/lib/getUser";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 import {useEffect, useState} from "react";
 import {User} from "@/types";
+import {useRouter} from "next/navigation";
 
 export default function NavProfile() {
 
     const [user, setUser] = useState<null | User>(null)
+    const router = useRouter()
 
     const logoutHandler = () => {
         deleteCookie("user")
         setUser(null)
+        router.push("/")
     }
 
     useEffect(() => {
@@ -42,6 +51,11 @@ export default function NavProfile() {
                 <p className={"text-white font-bold"}>{user.username}</p>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+                <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                        <Link className={"font-semibold"} href={"/collection"}>Collection</Link>
+                    </DropdownMenuItem>
+                </DropdownMenuGroup>
                 <DropdownMenuItem className={"text-red-800 font-semibold hover:cursor-pointer"}
                                   onClick={logoutHandler}>
                     Log out

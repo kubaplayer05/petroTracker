@@ -22,6 +22,8 @@ export default async function GemstoneDetailsPage({params}: { params: { id: stri
 
     const {gemstone} = await getGemstoneDetails(params.id)
 
+    console.log(gemstone)
+
     return (
         <main className={"py-10 px-5"}>
             <GemstoneCardWIthDetails gemstone={gemstone}/>

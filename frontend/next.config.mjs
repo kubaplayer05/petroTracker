@@ -7,6 +7,10 @@ const nextConfig = {
                 hostname: "www.gia.edu",
                 port: "",
                 pathname: "**"
+            },
+            {
+                protocol: "https",
+                hostname: "*"
             }
         ]
     }

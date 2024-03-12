@@ -6,6 +6,7 @@ import authRoute from "./routes/authRoute";
 import authMiddleware from "./middlewares/authMiddleware";
 import mineralRoute from "./routes/mineralRoute";
 import gemstoneRoute from "./routes/gemstoneRoute";
+import userCollectionRoute from "./routes/userCollectionRoute";
 
 dotenv.config()
 
@@ -26,6 +27,8 @@ app.use("/mineral", mineralRoute)
 app.use("/gemstone", gemstoneRoute)
 
 app.use(authMiddleware)
+
+app.use("/collection", userCollectionRoute)
 
 // Start server api
 
